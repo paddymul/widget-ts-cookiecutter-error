@@ -8,13 +8,8 @@ import {
 } from '@jupyter-widgets/base';
 
 
-import {DCFCell  } from 'paddy-react-edit-list';
-
-
 import { createRoot } from "react-dom/client";
-//import ReactDOM from 'react-dom/client';
-//import * as rd from "react-dom/client";
-
+import React from "react";
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
 // Import the CSS
@@ -47,42 +42,24 @@ export class ExampleModel extends DOMWidgetModel {
   static view_module_version = MODULE_VERSION;
 }
 
+function ExampleComponent(props:any) {
+  return React.createElement('h1', null, `Hello ${props.name}`);
+}
+
 export class ExampleView extends DOMWidgetView {
   render() {
     this.el.classList.add('custom-widget');
-    console.log("this.el", this.el)
     this.value_changed();
-    console.log("this", this)
     try {
-      // console.log("RDCreateroot", ReactDOM.createRoot);
-      // const createRoot = ReactDOM.createRoot
-      console.log("DCFCell2", DCFCell)
-      console.log("112", createRoot)
       const root = createRoot(this.el as HTMLElement)
-      console.log("root2", root)
-      //root.render(React.createElement(DCFCell, {}, null));
-    } catch (e:any) {
-      console.log("error", e)
+      root.render(React.createElement(ExampleComponent, { name: "Paddy" }, null));
+    } catch (e) {
+      console.log("error instatiating React components", e)
     }
-
-
     this.model.on('change:value', this.value_changed, this);
-
-
-    //console.log("this.model", this.model)
-    
-
-
-    // const root = createRoot(document.getElementById("app") as HTMLElement)
-    // root.render(React.createElement(Main, { app: this }, null));
-
-
   }
 
   value_changed() {
     this.el.textContent = this.model.get('value') + "from_js";
   }
 }
-// console.log("local createRoot module", createRoot)
-// const root = createRoot(document.body as HTMLElement)
-// console.log("Rroot", root)
