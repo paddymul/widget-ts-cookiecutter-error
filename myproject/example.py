@@ -26,18 +26,18 @@ class ExampleWidget(DOMWidget):
     _view_module_version = Unicode(module_version).tag(sync=True)
 
     value = Unicode('Hello World').tag(sync=True)
-    command_config = Dict({}).tag(sync=True)
+    command_config = Dict({}).tag(sync=True)#
 
-    commands = List().tag(sync=True)
+    commands = List().tag(sync=True)#
 
-    command_classes = DefaultCommandKlsList
+    command_classes = DefaultCommandKlsList#
 
-    js_df = Dict({}).tag(sync=True)
+    js_df = Dict({}).tag(sync=True)#
 
     transformed_df = Dict({}).tag(sync=True)
     transform_error = Unicode('').tag(sync=True)
 
-    generated_py_code = Unicode('').tag(sync=True)
+    generated_py_code = Unicode('').tag(sync=True)#
     generated_py_error = Unicode('').tag(sync=True)
     
     def __init__(self, df):
@@ -46,7 +46,7 @@ class ExampleWidget(DOMWidget):
         self.js_df = json.loads(df.to_json(orient='table', indent=2))
         self.setup_from_command_kls_list()
 
-    @observe('commands')
+    @observe('commands')#
     def interpret_commands(self, change):
         try:
             commands = change['new']
