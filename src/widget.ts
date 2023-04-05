@@ -63,14 +63,14 @@ export class ExampleView extends DOMWidgetView {
 	//this.value_changed();
 	const root = createRoot(this.el as HTMLElement)
 	
-	const widgetModel = this.model
+	const widgetModel = this.model//
 	const widget = this
 	widgetModel.on(
 	    'change:command_config',
 	    () => { widget.setCommandConfig(widgetModel.get('command_config'))},
 	    this)
 
-	const widgetGetTransformRequester = (setDf:any) => {
+	const widgetGetTransformRequester = (setDf:any) => {//
 	    widgetModel.on('change:transformed_df', () => {
 		setDf(widgetModel.get('transformed_df') as DFWhole)
 	    }, this)
@@ -83,7 +83,7 @@ export class ExampleView extends DOMWidgetView {
 	    return baseRequestTransform;
 	};
 
-	const widgetGetPyRequester = (setPyCode:any) => {
+	const widgetGetPyRequester = (setPyCode:any) => {//
 	    //_.delay(() => setPyCode("padddy"), 200)
 	    widgetModel.on('change:generated_py_code', () => {
 		const genCode = widgetModel.get('generated_py_code')

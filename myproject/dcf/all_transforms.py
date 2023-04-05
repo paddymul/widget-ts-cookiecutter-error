@@ -3,7 +3,7 @@ from .configure_utils import configure_dcf
 import pandas as pd
 import numpy as np
 
-class Transform(object):
+class Transform(object):#
     pass
     
 class FillNA(Transform):
@@ -124,10 +124,10 @@ class GroupBy(Transform):
 
     
 
-DefaultCommandKlsList = [FillNA, DropCol, OneHot, GroupBy]
+DefaultCommandKlsList = [FillNA, DropCol, OneHot, GroupBy]#
 # command_defaults, command_patterns, dcf_transform, dcf_to_py_core = configure_dcf([
 #     FillNA, DropCol, OneHot, GroupBy, SafeInt])
-command_defaults, command_patterns, dcf_transform, dcf_to_py_core = configure_dcf(DefaultCommandKlsList)
+command_defaults, command_patterns, dcf_transform, dcf_to_py_core = configure_dcf(DefaultCommandKlsList)#
 
 #print(dcf_to_py_core([GroupBy.test_sequence]))
 #print(GroupBy.test_output)
